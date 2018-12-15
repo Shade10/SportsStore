@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SportsStore.Domain.Entities;
 
 namespace SportsStore.Domain.Abstract {
-    interface IProductRepository {
+    public interface IProductRepository {
+        IEnumerable<Product> Products { get; }
+
     }
 }
