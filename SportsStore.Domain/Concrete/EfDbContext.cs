@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using SportsStore.Domain.Entities;
 
 namespace SportsStore.Domain.Concrete {
-    class EfDbContext : DbContext {
+    public class EfDbContext : DbContext {
         public DbSet<Product> Products { get; set; }
 
     }
