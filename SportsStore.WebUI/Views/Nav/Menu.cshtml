@@ -7,9 +7,11 @@
     {
         controller="Product",
         action = "List",
-        category =  1
+        category =  link,
+        page = 1
     }, new
     {
         @class = "btn btn-block btn-default btn-lg"
+        + (link == ViewBag.SelectedCategory ? " btn-primary": "")
     })
 }
