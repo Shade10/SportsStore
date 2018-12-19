@@ -3,12 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SportsStore.Domain.Abstract;
+using SportsStore.Domain.Entities;
 
 namespace SportsStore.WebUI.Controllers {
-    public class NavController : Controller {
+    public class NavController : Controller
+    {
+        private IProductRepository repository;
+
+        public NavController(IProductRepository repo)
+        {
+            repository = repo;
+        }
         // GET: Nav
-        public string Menu() {
-            return "Nav Controller";
+        public PartialViewResult Menu()
+        {
+            IEnumerable<string> categories = repository.Products.Select(x => x.Category).Distinct().OrderBy(x => x);
+
+            return PartialView(categories);
         }
     }
 }
