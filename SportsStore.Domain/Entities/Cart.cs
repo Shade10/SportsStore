@@ -14,9 +14,9 @@ namespace SportsStore.Domain.Entities {
                 .FirstOrDefault();
 
             if (line == null) {
-                lineCollection.Add(new CartLine { Product = product, Quality = quantity });
+                lineCollection.Add(new CartLine { Product = product, Quantity = quantity });
             } else {
-                line.Quality += quantity;
+                line.Quantity += quantity;
             }
         }
 
@@ -25,7 +25,7 @@ namespace SportsStore.Domain.Entities {
         }
 
         public decimal ComputeTotalValue() {
-            return lineCollection.Sum(e => e.Product.Price * e.Quality);
+            return lineCollection.Sum(e => e.Product.Price * e.Quantity);
         }
 
         public void Clear() {

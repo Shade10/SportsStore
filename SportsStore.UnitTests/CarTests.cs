@@ -34,8 +34,8 @@ namespace SportsStore.UnitTests {
             CartLine[] results = target.Lines.OrderBy(c => c.Product.ProductID).ToArray();
 
             Assert.AreEqual(results.Length, 2);
-            Assert.AreEqual(results[0].Quality, 11);
-            Assert.AreEqual(results[1].Quality, 1);
+            Assert.AreEqual(results[0].Quantity, 11);
+            Assert.AreEqual(results[1].Quantity, 1);
         }
         [TestMethod]
         public void Can_Remove_Line() {
