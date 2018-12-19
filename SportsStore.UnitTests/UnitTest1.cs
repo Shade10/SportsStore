@@ -83,8 +83,7 @@ namespace SportsStore.UnitTests {
         }
 
         [TestMethod]
-        public void Can_Filter_Products()
-        {
+        public void Can_Filter_Products() {
             Mock<IProductRepository> mock = new Mock<IProductRepository>();
             mock.Setup(m => m.Products).Returns(new Product[]
             {
@@ -101,8 +100,30 @@ namespace SportsStore.UnitTests {
             Product[] result = ((ProductListViewModel) controller.List("cat2", 1).Model).Products.ToArray();
 
             Assert.AreEqual(result.Length, 2);
-            Assert.IsTrue(result[0].Name == "p2" && result[0].Category =="cat2");
+            Assert.IsTrue(result[0].Name == "p2" && result[0].Category == "cat2");
             Assert.IsTrue(result[1].Name == "p4" && result[1].Category == "cat2");
         }
+
+        [TestMethod]
+        public void Can_Create_Categories() {
+            Mock<IProductRepository> mock = new Mock<IProductRepository>();
+            mock.Setup(m => m.Products).Returns(new Product[]
+            {
+                new Product {ProductID = 1, Name = "p1", Category = "jabłka"},
+                new Product {ProductID = 2, Name = "p2", Category = "jabłka"},
+                new Product {ProductID = 3, Name = "p3", Category = "śliwki"},
+                new Product {ProductID = 4, Name = "p4", Category = "pomarańcze"},
+            });
+
+            NavController target = new NavController(mock.Object);
+
+            string[] result = ((IEnumerable<string>) target.Menu().Model).ToArray();
+
+            Assert.AreEqual(result.Length, 3);
+            Assert.AreEqual(result[0], "jabłka");
+            Assert.AreEqual(result[1], "pomarańcze");
+            Assert.AreEqual(result[2], "śliwki");
+        }
+
     }
 }
