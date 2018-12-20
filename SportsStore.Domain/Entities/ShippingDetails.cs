@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SportsStore.Domain.Entities {
-    class ShippingDetails {
+    public class ShippingDetails {
         [Required(ErrorMessage = "Proszę podać nazwisko")]
         public string Name { get; set; }
         [Required(ErrorMessage = "Proszę podać adres wysyłki")]
