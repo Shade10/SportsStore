@@ -84,7 +84,16 @@ namespace SportsStore.Domain.Concrete {
                     mailMessage.BodyEncoding = Encoding.ASCII;
                 }
 
-                smtpClient.Send(mailMessage);
+                //without try catch this don't work
+                try {
+                    smtpClient.Send(mailMessage);
+
+                } catch (Exception e) {
+                    Console.WriteLine(e);
+                    if (e.InnerException != null) {
+                        Console.WriteLine("InnerException is: {0}", e.InnerException);
+                    }
+                }
             }
         }
     }
