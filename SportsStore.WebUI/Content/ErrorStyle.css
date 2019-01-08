@@ -1,0 +1,3 @@
+﻿.field-validation-erro { color: #f00;}
+.field.validation-valid { display: none;}
+.input-validation-error { border: 1px solid #f00; background-color: #fee;}

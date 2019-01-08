@@ -99,7 +99,7 @@ namespace SportsStore.UnitTests {
 
             Cart cart = new Cart();
 
-            CartController target = new CartController(mock.Object);
+            CartController target = new CartController(mock.Object, null);
 
             target.AddToCart(cart, 1, null);
 
