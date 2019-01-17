@@ -1,7 +1,7 @@
 ﻿@model SportsStore.Domain.Entities.Product
 
 @{
-    ViewBag.Title = "Administracja: edycja " + Model.Name;
+    ViewBag.Title = "Administracja: edycja " + @Model.Name;
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -19,7 +19,9 @@
                 <div class="form-group">
                     <label>@(property.DisplayName ?? property.PropertyName)</label>
                     @if (property.PropertyName == "Description") {
-                        @Html.TextArea(property.PropertyName, null, new { @class = "form-control" })
+                        @Html.TextArea(property.PropertyName, null, new { @class = "form-control", rows = 5 })
+                    } else {
+                        @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
                     }
                 </div>
             }
