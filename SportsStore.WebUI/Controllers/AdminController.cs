@@ -51,7 +51,7 @@ namespace SportsStore.WebUI.Controllers
         [HttpPost]
         public ActionResult Delete(int productId)
         {
-            Product deletedProduct = repository.DeleteProdut(productId);
+            Product deletedProduct = repository.DeleteProduct(productId);
             if (deletedProduct != null)
             {
                 TempData["message"] = string.Format("Usunięto {0}", deletedProduct.Name);
