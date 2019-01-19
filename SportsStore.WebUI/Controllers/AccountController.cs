@@ -7,10 +7,10 @@ using SportsStore.WebUI.Infrastructure.Abstract;
 using SportsStore.WebUI.Models;
 
 namespace SportsStore.WebUI.Controllers {
-    public class AccontController : Controller {
+    public class AccountController : Controller {
         IAuthProvider authProvider;
 
-        public AccontController(IAuthProvider auth) {
+        public AccountController(IAuthProvider auth) {
             authProvider = auth;
         }
         // GET: Accont
