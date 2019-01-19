@@ -10,5 +10,19 @@
     <div class="panel-heading">
         <h3>Zaloguj się</h3>
     </div>
-    <div class="panel-body"></div>
+    <div class="panel-body">
+        <p class="lead">Proszę się zalogować, aby uzyskać dostęp do obszaru administacyjnego:</p>
+        @using (Html.BeginForm()) {
+            @Html.ValidationSummary()
+            <div class="form-group">
+                <label>Nazwa użytkownika:</label>
+                @Html.TextBoxFor(m => m.UseName, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Hasło:</label>
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            </div>
+            <input type="submit" value="Zaloguj się" class="btn btn-primary" />
+        }
+    </div>
 </div>
