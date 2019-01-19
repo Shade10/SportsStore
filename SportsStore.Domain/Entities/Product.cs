@@ -28,5 +28,9 @@ namespace SportsStore.Domain.Entities {
         [Display(Name = "Kategoria")]
         public string Category { get; set; }
 
+        public byte ImageData { get; set; }
+        public string ImageMimeType { get; set; }
+
+
     }
 }
