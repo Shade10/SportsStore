@@ -32,5 +32,31 @@ namespace SportsStore.WebUI.Controllers {
                 return View();
             }
         }
+
+
+        public ViewResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(RegisterViewModel model, string returnUrl)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new User()
+                {
+                    Name = model.Name,
+                    Surname = model.Surname,
+                    Email = model.Email
+                };
+
+                return Redirect(returnUrl ?? Url.Action("Index", "Admin"));
+            }
+            else
+            {
+                return View();
+            }
+        }
     }
 }
