@@ -41,5 +41,24 @@ namespace SportsStore.Domain.Concrete {
 
             return dbEntry;
         }
+
+        public Product AddProduct(Product product)
+        {
+            var newProduct = new Product()
+            {
+                ProductID = product.ProductID,
+                Name = product.Name,
+                Price = product.Price,
+                Category = product.Category,
+                Description = product.Description,
+                ImageData = product.ImageData,
+                ImageMimeType = product.ImageMimeType
+            };
+
+            context.Products.Add(newProduct);
+            context.SaveChanges();
+
+            return newProduct;
+        }
     }
 }

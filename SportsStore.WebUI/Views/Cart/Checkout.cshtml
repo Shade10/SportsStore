@@ -5,14 +5,14 @@
 }
 
 <h2>Wysyłka</h2>
-<p>Proszę podać swoje ane, a towar zostanie natychmiast wysłany!</p>
+<p>Proszę podać swoje dane, a towar zostanie natychmiast wysłany!</p>
 
 @using (@Html.BeginForm()) {
     @Html.ValidationSummary()
 
     <h3>Wysyłka dla</h3>
     <div class="form-group">
-        <label>Nazwisko:</label>
+        <label>imię i Nazwisko:</label>
         @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
     </div>
 

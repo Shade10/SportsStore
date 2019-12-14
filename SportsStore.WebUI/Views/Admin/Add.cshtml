@@ -1,0 +1,77 @@
+﻿@model SportsStore.Domain.Entities.Product
+
+@{
+    ViewBag.Title = "Administracja: edycja " + @Model.Name;
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="panel">
+    <div class="panel-heading">
+        <h3>Dodawanie produktu @Model.Name</h3>
+    </div>
+</div>
+@using (Html.BeginForm("AddProduct", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+<div style="text-align: center;">
+    <table id="albumedit-address-table">
+        <tr>
+            <td>@Html.LabelFor(p => p.Name, "Nazwa:")</td>
+            <td>@Html.TextBoxFor(p => p.Name)</td>
+            <td>@Html.ValidationMessageFor(p => p.Name)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(p => p.Description, "Opis:")</td>
+            <td>@Html.TextBoxFor(p => p.Description)</td>
+            <td>@Html.ValidationMessageFor(p => p.Description)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(p => p.Category, "Kategoria:")</td>
+            <td>@Html.TextBoxFor(p => p.Category)</td>
+            <td>@Html.ValidationMessageFor(p => p.Category)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(p => p.Price, "Cena:")</td>
+            <td>@Html.TextBoxFor(p => p.Price)</td>
+            <td>@Html.ValidationMessageFor(p => p.Price)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(p => p.ImageData, "obrazek:")</td>
+            <td>@Html.TextBoxFor(p => p.ImageData)</td>
+            <td>@Html.ValidationMessageFor(p => p.ImageData)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(p => p.ImageMimeType, "obrazek type:")</td>
+            <td>@Html.TextBoxFor(p => p.ImageMimeType)</td>
+            <td>@Html.ValidationMessageFor(p => p.ImageMimeType)</td>
+        </tr>
+    </table>
+</div>
+        <div class="form-group">
+            <div style="position: relative;">
+                <label>Zdjęcie</label>
+                <a class='btn' href='javascript:;'>
+                    Wybierz plik...
+                    <input type="file" name="Image"
+                           size="40"
+                           style="position: absolute; z-index: 2; top: 0; left: 0; filter: alpha(opacity=0);opacity: 0 ; background-color: transparent;color: transparent"
+                           onchange='$("#upload-file-info").html($(this).val())' />
+                </a>
+                <span class="label label-info" id="upload-file-info"></span>
+            </div>
+            @if (Model.ImageData == null)
+            {
+                <div class="form-control-static">Brak zdjęcia</div>
+            }
+            else
+            {
+                <img class="img-thumbnail" width="150" height="150"
+                     src="@Url.Action("GetImage", "Product", new {Model.ProductID})" />
+            }
+        </div>
+
+    <div class="panel-footer">
+        <input type="submit" value="Zapisz" class="btn btn-primary" />
+        @Html.ActionLink("Anuluj i wróć do listy ", "Index", null, new { @class = "btn btn-default" })
+    </div>
+}

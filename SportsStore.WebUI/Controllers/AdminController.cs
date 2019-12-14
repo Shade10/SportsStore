@@ -53,5 +53,18 @@ namespace SportsStore.WebUI.Controllers {
 
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public ActionResult AddProduct(Product product)
+        {
+            Product newProduct = repository.AddProduct(product);
+
+            if(newProduct != null)
+            {
+                TempData["message"] = string.Format("Dodano {0}", newProduct.Name);
+            }
+
+            return RedirectToAction("Index");
+        }
     }
 }

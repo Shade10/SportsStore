@@ -28,6 +28,12 @@
                             <input type="submit" value="Usuń" />
                         }
                     </td>
+                    <td>
+                        @using (Html.BeginForm("Edit", "Admin")) {
+                            @Html.Hidden("ProductID", item.ProductID)
+                            <input type="submit" value="Edytuj" />
+                        }
+                    </td>
                 </tr>
             }
         </table>
